@@ -2,7 +2,13 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { getProjectBySlug } from '@/sanity/sanity-utils'
 
-const ProjectPage = async ({ params }: { params: { slug: string } }) => {
+type Props = {
+	params: Promise<{
+		slug: string
+	}>
+}
+
+const ProjectPage = async ({ params }: Props) => {
 	const { slug } = await params
 
 	const project = await getProjectBySlug(slug)

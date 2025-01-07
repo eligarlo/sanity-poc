@@ -1,7 +1,13 @@
 import { getPageBySlug } from '@/sanity/sanity-utils'
 import { PortableText } from '@portabletext/react'
 
-const SlugPage = async ({ params }: { params: { slug: string } }) => {
+type Props = {
+	params: Promise<{
+		slug: string
+	}>
+}
+
+const SlugPage = async ({ params }: Props) => {
 	const { slug } = await params
 	const page = await getPageBySlug(slug)
 
